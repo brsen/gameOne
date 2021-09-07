@@ -1,0 +1,132 @@
+public void setup() {
+  size(400,400);
+  textAlign(CENTER);
+}
+int leftButton;
+int rightButton;
+int x=175;
+int y=250;
+int ballOneY = -50;
+int ballOneX= (int)random(75,325);
+int ballTwoY = -100;
+int ballTwoX = (int)random(75,325);
+int ballThreeY = -150;
+int ballThreeX = (int)random(75,325);
+int ballFourY = -200;
+int ballFourX = (int)random(75,325);
+int ballFiveY = -250;
+int ballFiveX = (int)random(75,325);
+public void draw() {
+  visuals();
+  movement();
+  barrier();
+  ballOne();
+  ballTwo();
+  ballThree();
+  ballFour();
+  ballFive();
+  collisionCheck();
+  //scoreboard
+  textSize(12);
+  text("Score:" + frameCount/60,25,20);
+}
+
+void movement() {
+    if (keyCode == LEFT) {
+    x=x-4;
+  }
+    if (keyCode == RIGHT) {
+    x=x+4;
+  }
+}
+
+void ballOne() { 
+  ellipse(ballOneX,ballOneY,50,50);
+  ballOneY = ballOneY + 3;
+  if (ballOneY > 450){
+    ballOneY = -50;
+    ballOneX = (int)random(75,325);
+  }
+}
+void ballTwo() { 
+  ellipse(ballTwoX,ballTwoY,50,50);
+  ballTwoY = ballTwoY + 3;
+  if (ballTwoY > 450){
+    ballTwoY = -100;
+    ballTwoX = (int)random(75,325);
+  }
+}
+
+void ballThree() { 
+  ellipse(ballThreeX,ballThreeY,50,50);
+  ballThreeY = ballThreeY + 3;
+  if (ballThreeY > 450){
+    ballThreeY = -150;
+    ballThreeX = (int)random(75,325);
+  }
+}
+
+void ballFour() { 
+  ellipse(ballFourX,ballFourY,50,50);
+  ballFourY = ballFourY + 3;
+  if (ballFourY > 450){
+    ballFourY = -150;
+    ballFourX = (int)random(75,325);
+  }
+}
+
+void ballFive() { 
+  ellipse(ballFiveX,ballFiveY,50,50);
+  ballFiveY = ballFiveY + 3;
+  if (ballFiveY > 450){
+    ballFiveY = -150;
+    ballFiveX = (int)random(75,325);
+  }
+}
+
+void collisionCheck() {
+  if ((float)dist(x,y,ballOneX,ballOneY) < 50) {
+   text("Game", 375,20);
+   text("Over!",375,32);
+   stop();
+  }
+  if ((float)dist(x,y,ballTwoX,ballTwoY) < 50) {
+   text("Game", 375,20);
+   text("Over!",375,32);
+   stop();
+   }
+  if ((float)dist(x,y,ballThreeX,ballThreeY) < 50) {
+   text("Game", 375,20);
+   text("Over!",375,32);
+   stop();
+   }
+  if ((float)dist(x,y,ballFourX,ballFourY) < 50) {
+   text("Game", 375,20);
+   text("Over!",375,32);
+   stop();
+   }
+  if ((float)dist(x,y,ballFiveX,ballFiveY) < 50) {
+   text("Game", 375,20);
+   text("Over!",375,32);
+   stop();
+   }
+}
+
+void barrier() {
+  if (x <= 75) {
+    x=75;
+  }
+  if (x >= 325) {
+    x=325;
+  }
+}
+
+void visuals() {
+  fill(0,0,0);
+  background(192);
+  ellipse(x,y,50,50);
+  fill(0,256,0);
+  rect(0,0,50,400);
+  rect(350,0,50,400);
+  fill(256,0,0);
+}
